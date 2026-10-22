@@ -5,95 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; color: #333; }
+        body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
-        /* Encabezado exacto del SIET */
-        .header-siet { background: #ffffff; border-bottom: 3px solid #1a2b4c; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .header-left { display: flex; align-items: center; gap: 20px; }
-        .colombia-tag { font-size: 11px; font-weight: bold; color: #333; line-height: 1.1; text-transform: uppercase; border-right: 2px solid #ccc; padding-right: 15px; }
-        .siet-logo { font-size: 40px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
-        .siet-box { border: 2px dashed #333; padding: 5px 12px; font-size: 12px; color: #222; font-weight: bold; text-align: center; }
-        .header-right { font-size: 20px; font-weight: bold; color: #333; }
+        /* Encabezado exacto con el bloque de Mineducación a la derecha */
+        .header-siet { background: #ffffff; border-bottom: 2px solid #bdc3c7; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .siet-logo { font-size: 42px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
+        .siet-box { border: 1px solid #7f8c8d; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        
+        /* Bloque superior derecho idéntico a la referencia */
+        .header-right-block { display: flex; align-items: stretch; height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .block-escudo { background: #eef2f5; display: flex; align-items: center; justify-content: center; padding: 0 10px; border: 1px solid #bdc3c7; }
+        .block-escudo img { height: 42px; width: auto; }
+        .block-lema { background: #0056b3; color: white; display: flex; align-items: center; padding: 0 18px; font-size: 13px; font-weight: bold; text-align: center; line-height: 1.2; }
+        .block-min { background: #3399ff; color: white; display: flex; align-items: center; padding: 0 20px; font-size: 14px; font-weight: bold; }
 
-        .main-container { max-width: 1250px; margin: 30px auto; padding: 0 20px; }
+        .main-container { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
 
-        /* Pantalla de Login (Paso 1) */
-        .login-box { background: #ffffff; border: 1px solid #d0d7de; width: 420px; margin: 40px auto; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden; }
-        .login-header { background: #1a2b4c; color: white; padding: 12px 20px; font-weight: bold; font-size: 15px; }
-        .login-body { padding: 25px; }
+        /* Cuadro de Ingreso con pestaña superior */
+        .login-container { width: 400px; margin: 0 auto 50px auto; position: relative; }
+        .login-tab { background: #0056b3; color: white; padding: 8px 20px; font-size: 13px; font-weight: bold; display: inline-block; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        .login-box { background: #f8f9fa; border: 1px solid #bdc3c7; border-top: none; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
-        .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 110px; }
-        .form-group input { width: 250px; padding: 7px; border: 1px solid #7f8c8d; border-radius: 3px; font-size: 13px; background-color: #fafafa; }
-        .login-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
-        .btn { padding: 8px 18px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; }
+        .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 100px; }
+        .form-group input { width: 230px; padding: 7px; border: 1px solid #7f8c8d; border-radius: 2px; font-size: 13px; background: #fff; }
+        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+        .btn { padding: 7px 16px; border: none; border-radius: 3px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .btn-ingresar { background-color: #f39c12; color: white; }
         .btn-ingresar:hover { background-color: #e67e22; }
-        .btn-registrarse { background-color: #e0e0e0; color: #333; }
-        .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #2980b9; text-decoration: underline; }
+        .btn-registrarse { background-color: #f1f2f6; color: #333; border: 1px solid #dcdde1; }
+        .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #0056b3; text-decoration: underline; }
 
-        /* Panel de Búsqueda Interno (Paso 2 - Oculto hasta hacer Login) */
+        /* Banners inferiores de consulta */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .banner-card { background: #0077b6; color: white; padding: 22px 15px; display: flex; align-items: center; gap: 15px; border-radius: 2px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .banner-card:hover { background: #005f87; }
+        .banner-icon { font-size: 28px; border: 2px solid white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .banner-text { font-size: 15px; font-weight: bold; line-height: 1.3; }
+
+        /* Banner inferior ancho */
+        .banner-bottom { background: #005f87; color: white; padding: 25px; display: flex; align-items: center; justify-content: space-between; border-radius: 2px; }
+        .banner-bottom-left { display: flex; align-items: center; gap: 20px; }
+        .banner-bottom-text { font-size: 20px; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
+
+        /* Panel de Consulta Interno (Oculto hasta hacer Login) */
         #panelConsulta { display: none; }
-        .search-panel { background: #e8ecef; border: 1px solid #d0d7de; padding: 20px 25px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .search-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .search-panel { background: #eef2f5; border: 1px solid #bdc3c7; padding: 20px; border-radius: 4px; margin-bottom: 30px; }
+        .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
         .search-group label { font-size: 12px; font-weight: bold; color: #1a2b4c; text-transform: uppercase; }
-        .search-select, .search-input { padding: 8px 12px; font-size: 13px; border: 1px solid #7f8c8d; border-radius: 3px; background: #fff; width: 220px; }
-        .btn-buscar { background-color: #1a2b4c; color: white; border: none; padding: 9px 22px; font-size: 13px; font-weight: bold; border-radius: 3px; cursor: pointer; display: flex; align-items: center; gap: 5px; text-transform: uppercase; }
-        .btn-buscar:hover { background-color: #2c3e50; }
+        .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #7f8c8d; border-radius: 2px; background: #fff; width: 200px; }
+        .btn-buscar { background-color: #0056b3; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
         .logout-link { float: right; color: #c0392b; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
 
-        /* Tarjetas de Navegación */
-        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
-        .card-banner { background: linear-gradient(135deg, #1b4f72, #2980b9); color: white; padding: 35px 20px; border-radius: 6px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .card-banner h3 { margin: 0; font-size: 17px; font-weight: 500; }
-
-        /* Tabla de Resultados Oficial */
+        /* Tabla de Resultados */
         .results-container { display: none; margin-top: 20px; }
         .table-responsive { overflow-x: auto; background: white; border: 1px solid #1a2b4c; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
         th { background-color: #1a2b4c; color: white; padding: 12px 6px; border: 1px solid #2c3e50; font-weight: bold; text-transform: uppercase; }
         td { padding: 14px 6px; border: 1px solid #d0d7de; color: #333; font-weight: 500; background-color: #fff; }
-
-        /* Franja Inferior */
-        .footer-banner { background: #1a2b4c; color: white; padding: 15px 30px; font-weight: bold; font-size: 14px; letter-spacing: 1px; margin-top: 50px; text-align: center; }
     </style>
 </head>
 <body>
 
+    <!-- Encabezado exacto con el bloque de Mineducación a la derecha -->
     <div class="header-siet">
         <div class="header-left">
-            <div class="colombia-tag">COLOMBIA<br>POTENCIA DE LA<br>VIDA</div>
             <div class="siet-logo">SIET</div>
             <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
         </div>
-        <div class="header-right">
-            <span>Educación</span>
+        <div class="header-right-block">
+            <div class="block-escudo">
+                <!-- Escudo de Colombia oficial -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Coat_of_arms_of_Colombia.svg" alt="Escudo de Colombia">
+            </div>
+            <div class="block-lema">La educación<br>es de todos</div>
+            <div class="block-min">Mineducación</div>
         </div>
     </div>
 
     <div class="main-container">
         
-        <!-- MÓDULO DE LOGIN PRIVADO -->
-        <div id="panelLogin" class="login-box">
-            <div class="login-header">Ingreso al Sistema</div>
-            <div class="login-body">
-                <div class="form-group">
-                    <label>Usuario:</label>
-                    <input type="text" id="userInput" value="LEXISTRAMITACOL">
+        <!-- PANTALLA DE INICIO / LOGIN -->
+        <div id="panelLogin">
+            <div class="login-container">
+                <div class="login-tab">Ingreso</div>
+                <div class="login-box">
+                    <div class="form-group">
+                        <label>Usuario:</label>
+                        <input type="text" id="userInput" value="LEXISTRAMITACOL">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña:</label>
+                        <input type="password" id="passInput" placeholder="Contraseña">
+                    </div>
+                    <div class="login-buttons">
+                        <button class="btn btn-ingresar" onclick="realizarLogin()">Ingresar</button>
+                        <button class="btn btn-registrarse">Regístrese</button>
+                    </div>
+                    <a href="#" class="forgot-pass">Recordar Contraseña</a>
                 </div>
-                <div class="form-group">
-                    <label>Contraseña:</label>
-                    <input type="password" id="passInput" placeholder="Contraseña">
+            </div>
+
+            <!-- Banners inferiores idénticos al de la foto -->
+            <div id="bloqueBanners">
+                <div class="banners-grid">
+                    <div class="banner-card">
+                        <div class="banner-icon">🔍</div>
+                        <div class="banner-text">Consulta instituciones educación para el trabajo</div>
+                    </div>
+                    <div class="banner-card">
+                        <div class="banner-icon">📋</div>
+                        <div class="banner-text">Consulta programas de formación</div>
+                    </div>
                 </div>
-                <div class="login-buttons">
-                    <button class="btn btn-ingresar" onclick="realizarLogin()">Ingresar</button>
-                    <button class="btn btn-registrarse">Regístrese</button>
+
+                <div class="banner-bottom">
+                    <div class="banner-bottom-left">
+                        <div style="font-size: 24px;">💻</div>
+                        <div class="banner-bottom-text">EDUCACIÓN PARA EL TRABAJO<br>Y EL DESARROLLO HUMANO</div>
+                    </div>
                 </div>
-                <a href="#" class="forgot-pass">Recordar Contraseña</a>
             </div>
         </div>
 
-        <!-- MÓDULO DE CONSULTA INTERNO (Aparece tras el login correcto) -->
+        <!-- PANTALLA DE CONSULTA INTERNA (Tras Iniciar Sesión) -->
         <div id="panelConsulta">
             <a href="#" class="logout-link" onclick="cerrarSesion()">Cerrar Sesión</a>
             <div style="clear: both;"></div>
@@ -114,7 +150,7 @@
                 </div>
             </div>
 
-            <!-- Resultados en Tabla -->
+            <!-- Resultados en Tabla Oficial -->
             <div id="resultados" class="results-container">
                 <div class="table-responsive">
                     <table>
@@ -137,25 +173,11 @@
                     </table>
                 </div>
             </div>
-
-            <div class="cards-grid" id="tarjetasInicio">
-                <div class="card-banner">
-                    <h3>Consulta instituciones educación para el trabajo</h3>
-                </div>
-                <div class="card-banner">
-                    <h3>Consulta programas de formación</h3>
-                </div>
-            </div>
         </div>
 
     </div>
 
-    <div class="footer-banner">
-        EDUCACIÓN PARA EL TRABAJO Y EL DESARROLLO HUMANO
-    </div>
-
     <script>
-        // Base de datos de estudiantes
         const baseDatosEstudiantes = {
             "52829284": {
                 codigoPrograma: "003503",
@@ -198,7 +220,7 @@
             },
             "9296180": {
                 codigoPrograma: "7731",
-                nombrePrograma: "INGENIERÍA MECATRÓNICA",
+                nombrePrograma: "INGENIERíA MECATRÓNICA",
                 estado: "GRADUADO",
                 primerNombre: "RONYS",
                 segundoNombre: "JOSE",
@@ -213,7 +235,6 @@
 
         function realizarLogin() {
             let usuario = document.getElementById('userInput').value.trim();
-            // Puedes poner la contraseña que prefieras aquí (actualmente configurada genérica o libre)
             if (usuario === "LEXISTRAMITACOL") {
                 document.getElementById('panelLogin').style.display = "none";
                 document.getElementById('panelConsulta').style.display = "block";
@@ -226,13 +247,13 @@
             document.getElementById('panelConsulta').style.display = "none";
             document.getElementById('panelLogin').style.display = "block";
             document.getElementById('passInput').value = "";
+            document.getElementById('resultados').style.display = "none";
         }
 
         function buscarEstudiante() {
             let cedula = document.getElementById('cedulaInput').value.trim().replace(/\./g, '');
             let contenedorResultados = document.getElementById('resultados');
             let cuerpoTabla = document.getElementById('tablaCuerpo');
-            let tarjetas = document.getElementById('tarjetasInicio');
 
             if (!cedula) {
                 alert("Por favor ingrese un número de identificación.");
@@ -258,11 +279,9 @@
                     </tr>
                 `;
                 contenedorResultados.style.display = "block";
-                tarjetas.style.display = "none";
             } else {
                 contenedorResultados.style.display = "block";
                 cuerpoTabla.innerHTML = `<tr><td colspan="11" style="color: red; padding: 20px; font-weight: bold;">No se encontró ningún registro asociado al número de documento ingresado.</td></tr>`;
-                tarjetas.style.display = "none";
             }
         }
     </script>
