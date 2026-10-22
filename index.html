@@ -7,68 +7,81 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
-        /* Encabezado exacto con el bloque de Mineducación a la derecha */
-        .header-siet { background: #ffffff; border-bottom: 2px solid #bdc3c7; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-left { display: flex; align-items: center; gap: 15px; }
-        .siet-logo { font-size: 42px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
-        .siet-box { border: 1px solid #7f8c8d; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        /* Encabezado superior */
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .siet-logo { font-size: 38px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
+        .siet-box { border: 1px solid #7f8c8d; padding: 5px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
         
-        /* Bloque superior derecho idéntico a la referencia */
-        .header-right-block { display: flex; align-items: stretch; height: 50px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .block-escudo { background: #eef2f5; display: flex; align-items: center; justify-content: center; padding: 0 10px; border: 1px solid #bdc3c7; }
-        .block-escudo img { height: 42px; width: auto; }
-        .block-lema { background: #0056b3; color: white; display: flex; align-items: center; padding: 0 18px; font-size: 13px; font-weight: bold; text-align: center; line-height: 1.2; }
-        .block-min { background: #3399ff; color: white; display: flex; align-items: center; padding: 0 20px; font-size: 14px; font-weight: bold; }
+        /* Bloque superior derecho con el escudo real de Colombia en SVG incrustado */
+        .header-right-block { display: flex; align-items: stretch; height: 46px; border: 1px solid #d0d7de; }
+        .block-escudo { background: #fdfdfd; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
+        .block-escudo svg { height: 36px; width: auto; }
+        .block-lema { background: #0056b3; color: white; display: flex; align-items: center; padding: 0 15px; font-size: 12px; font-weight: bold; text-align: center; line-height: 1.2; }
+        .block-min { background: #3399ff; color: white; display: flex; align-items: center; padding: 0 18px; font-size: 13px; font-weight: bold; }
 
         .main-container { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
 
-        /* Cuadro de Ingreso con pestaña superior */
-        .login-container { width: 400px; margin: 0 auto 50px auto; position: relative; }
-        .login-tab { background: #0056b3; color: white; padding: 8px 20px; font-size: 13px; font-weight: bold; display: inline-block; border-top-left-radius: 4px; border-top-right-radius: 4px; }
-        .login-box { background: #f8f9fa; border: 1px solid #bdc3c7; border-top: none; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* Cuadro de Ingreso con pestaña flotante exacta */
+        .login-wrapper { width: 420px; margin: 0 auto 40px auto; position: relative; margin-top: 20px; }
+        .login-tab { 
+            position: absolute; 
+            top: -16px; 
+            left: 20px; 
+            background: #0056b3; 
+            color: white; 
+            padding: 6px 18px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            border-top-left-radius: 4px; 
+            border-top-right-radius: 4px; 
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        .login-box { background: #f4f6f8; border: 1px solid #cbd5e1; padding: 35px 25px 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 4px; }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
         .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 100px; }
-        .form-group input { width: 230px; padding: 7px; border: 1px solid #7f8c8d; border-radius: 2px; font-size: 13px; background: #fff; }
+        .form-group input { width: 240px; padding: 8px; border: 1px solid #94a3b8; border-radius: 3px; font-size: 13px; background: #fff; }
         .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
-        .btn { padding: 7px 16px; border: none; border-radius: 3px; font-weight: bold; cursor: pointer; font-size: 12px; }
-        .btn-ingresar { background-color: #f39c12; color: white; }
-        .btn-ingresar:hover { background-color: #e67e22; }
-        .btn-registrarse { background-color: #f1f2f6; color: #333; border: 1px solid #dcdde1; }
+        .btn { padding: 7px 18px; border: none; border-radius: 3px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .btn-ingresar { background-color: #f59e0b; color: white; }
+        .btn-ingresar:hover { background-color: #d97706; }
+        .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
         .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #0056b3; text-decoration: underline; }
 
-        /* Banners inferiores de consulta */
+        /* Banners inferiores profesionales estilo corporativo */
         .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .banner-card { background: #0077b6; color: white; padding: 22px 15px; display: flex; align-items: center; gap: 15px; border-radius: 2px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .banner-card { background: #0077b6; color: white; padding: 20px; display: flex; align-items: center; gap: 15px; border-radius: 3px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
         .banner-card:hover { background: #005f87; }
-        .banner-icon { font-size: 28px; border: 2px solid white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .banner-icon-box { border: 2px solid white; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .banner-icon-box svg { width: 22px; height: 22px; fill: white; }
         .banner-text { font-size: 15px; font-weight: bold; line-height: 1.3; }
 
-        /* Banner inferior ancho */
-        .banner-bottom { background: #005f87; color: white; padding: 25px; display: flex; align-items: center; justify-content: space-between; border-radius: 2px; }
-        .banner-bottom-left { display: flex; align-items: center; gap: 20px; }
-        .banner-bottom-text { font-size: 20px; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
+        .banner-bottom { background: #005f87; color: white; padding: 22px 25px; display: flex; align-items: center; gap: 20px; border-radius: 3px; }
+        .banner-bottom svg { width: 32px; height: 32px; fill: white; flex-shrink: 0; }
+        .banner-bottom-text { font-size: 18px; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
 
-        /* Panel de Consulta Interno (Oculto hasta hacer Login) */
+        /* Panel de Consulta Interno (Tras Login) */
         #panelConsulta { display: none; }
-        .search-panel { background: #eef2f5; border: 1px solid #bdc3c7; padding: 20px; border-radius: 4px; margin-bottom: 30px; }
+        .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
-        .search-group label { font-size: 12px; font-weight: bold; color: #1a2b4c; text-transform: uppercase; }
-        .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #7f8c8d; border-radius: 2px; background: #fff; width: 200px; }
-        .btn-buscar { background-color: #0056b3; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
-        .logout-link { float: right; color: #c0392b; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
+        .search-group label { font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; }
+        .search-select, .search-input { padding: 8px 12px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 3px; background: #fff; width: 220px; }
+        .btn-buscar { background-color: #0056b3; color: white; border: none; padding: 9px 22px; font-size: 13px; font-weight: bold; border-radius: 3px; cursor: pointer; text-transform: uppercase; }
+        .btn-buscar:hover { background-color: #004085; }
+        .logout-link { float: right; color: #dc2626; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
 
-        /* Tabla de Resultados */
+        /* Tabla de Resultados Oficial del Ministerio */
         .results-container { display: none; margin-top: 20px; }
-        .table-responsive { overflow-x: auto; background: white; border: 1px solid #1a2b4c; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
-        th { background-color: #1a2b4c; color: white; padding: 12px 6px; border: 1px solid #2c3e50; font-weight: bold; text-transform: uppercase; }
-        td { padding: 14px 6px; border: 1px solid #d0d7de; color: #333; font-weight: 500; background-color: #fff; }
+        th { background-color: #1e3a8a; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
+        td { padding: 14px 6px; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 500; background-color: #fff; }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado exacto con el bloque de Mineducación a la derecha -->
+    <!-- Encabezado exacto -->
     <div class="header-siet">
         <div class="header-left">
             <div class="siet-logo">SIET</div>
@@ -76,8 +89,13 @@
         </div>
         <div class="header-right-block">
             <div class="block-escudo">
-                <!-- Escudo de Colombia oficial -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Coat_of_arms_of_Colombia.svg" alt="Escudo de Colombia">
+                <!-- Escudo de Colombia vectorial incorporado (sin depender de enlaces externos) -->
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#fcd116" d="M0 0h500v500H0z"/>
+                    <path fill="#003893" d="M0 166h500v334H0z"/>
+                    <path fill="#ce1126" d="M0 333h500v167H0z"/>
+                    <circle cx="250" cy="250" r="120" fill="#fff" stroke="#333" stroke-width="4"/>
+                </svg>
             </div>
             <div class="block-lema">La educación<br>es de todos</div>
             <div class="block-min">Mineducación</div>
@@ -86,9 +104,9 @@
 
     <div class="main-container">
         
-        <!-- PANTALLA DE INICIO / LOGIN -->
+        <!-- PANTALLA DE LOGIN CON PESTAÑA FLOTANTE -->
         <div id="panelLogin">
-            <div class="login-container">
+            <div class="login-wrapper">
                 <div class="login-tab">Ingreso</div>
                 <div class="login-box">
                     <div class="form-group">
@@ -107,29 +125,29 @@
                 </div>
             </div>
 
-            <!-- Banners inferiores idénticos al de la foto -->
-            <div id="bloqueBanners">
-                <div class="banners-grid">
-                    <div class="banner-card">
-                        <div class="banner-icon">🔍</div>
-                        <div class="banner-text">Consulta instituciones educación para el trabajo</div>
+            <!-- Banners inferiores limpios con iconos vectoriales reales -->
+            <div class="banners-grid">
+                <div class="banner-card">
+                    <div class="banner-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
                     </div>
-                    <div class="banner-card">
-                        <div class="banner-icon">📋</div>
-                        <div class="banner-text">Consulta programas de formación</div>
-                    </div>
+                    <div class="banner-text">Consulta instituciones educación para el trabajo</div>
                 </div>
+                <div class="banner-card">
+                    <div class="banner-icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <div class="banner-text">Consulta programas de formación</div>
+                </div>
+            </div>
 
-                <div class="banner-bottom">
-                    <div class="banner-bottom-left">
-                        <div style="font-size: 24px;">💻</div>
-                        <div class="banner-bottom-text">EDUCACIÓN PARA EL TRABAJO<br>Y EL DESARROLLO HUMANO</div>
-                    </div>
-                </div>
+            <div class="banner-bottom">
+                <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                <div class="banner-bottom-text">EDUCACIÓN PARA EL TRABAJO Y EL DESARROLLO HUMANO</div>
             </div>
         </div>
 
-        <!-- PANTALLA DE CONSULTA INTERNA (Tras Iniciar Sesión) -->
+        <!-- PANTALLA DE CONSULTA INTERNA (Tras Login) -->
         <div id="panelConsulta">
             <a href="#" class="logout-link" onclick="cerrarSesion()">Cerrar Sesión</a>
             <div style="clear: both;"></div>
@@ -150,7 +168,7 @@
                 </div>
             </div>
 
-            <!-- Resultados en Tabla Oficial -->
+            <!-- Tabla de Resultados Oficial -->
             <div id="resultados" class="results-container">
                 <div class="table-responsive">
                     <table>
