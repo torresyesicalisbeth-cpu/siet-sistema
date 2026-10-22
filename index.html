@@ -7,19 +7,19 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
-        /* Encabezado exacto con la imagen oficial arriba a la derecha */
-        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; }
+        /* Encabezado exacto del SIET */
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 20px; }
-        .logo-colombia { height: 45px; width: auto; }
         .siet-logo { font-size: 38px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
-        .siet-box { border: 1px dotted #555; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        .siet-box { border: 1px dotted #555; padding: 5px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
         
-        .header-right-img { height: 50px; width: auto; }
+        /* Imagen superior derecha con el logo de educación y escudo real */
+        .header-right-img { height: 48px; width: auto; display: block; }
 
         .main-container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
 
         /* Caja de Ingreso exacta con la pestaña flotante azul */
-        .login-wrapper { width: 420px; margin: 0 auto 40px auto; position: relative; margin-top: 15px; }
+        .login-wrapper { width: 420px; margin: 0 auto 35px auto; position: relative; margin-top: 15px; }
         .login-tab { 
             position: absolute; 
             top: -15px; 
@@ -44,12 +44,9 @@
         .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
         .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #2563eb; text-decoration: underline; }
 
-        /* Collage de imágenes inferiores exactas */
-        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .banner-img-link { display: block; cursor: pointer; transition: opacity 0.2s; }
-        .banner-img-link:hover { opacity: 0.9; }
-        .banner-img-link img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
+        /* Imágenes de banners inferiores integradas exactamente */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; }
         .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; }
 
         /* Panel de Consulta Interno (Tras Login) */
@@ -73,13 +70,12 @@
 </head>
 <body>
 
-    <!-- Encabezado exacto del SIET -->
+    <!-- Encabezado con tu imagen de logo superior derecha -->
     <div class="header-siet">
         <div class="header-left">
             <div class="siet-logo">SIET</div>
             <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
         </div>
-        <!-- Imagen superior derecha (Escudo con Educación) -->
         <div>
             <img class="header-right-img" src="logo-educacion.png" alt="Mineducación">
         </div>
@@ -108,18 +104,18 @@
                 </div>
             </div>
 
-            <!-- Collage de las 3 imágenes exactas -->
+            <!-- Tus 3 imágenes reales organizadas en collage exacto -->
             <div class="banners-grid">
-                <div class="banner-img-link">
-                    <img src="banner1.jpg" alt="Consulta instituciones educación para el trabajo">
+                <div>
+                    <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
                 </div>
-                <div class="banner-img-link">
-                    <img src="banner2.jpg" alt="Consulta programas de formación">
+                <div>
+                    <img class="banner-img" src="banner2.jpg" alt="Consulta programas">
                 </div>
             </div>
 
             <div>
-                <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo y el desarrollo humano">
+                <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo">
             </div>
         </div>
 
