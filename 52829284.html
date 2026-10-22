@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
+        .header-siet { background: #ffffff; border-bottom: 3px solid #1a2b4c; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .siet-logo { font-size: 38px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
+        .siet-subtitle { font-size: 12px; color: #333; border-left: 2px solid #333; padding-left: 10px; font-weight: bold; max-width: 240px; line-height: 1.3; }
+        .header-right { font-size: 16px; font-weight: bold; color: #333; }
+        
+        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        
+        .table-responsive { overflow-x: auto; background: white; border: 1px solid #1a2b4c; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; }
+        th { background-color: #1a2b4c; color: white; padding: 10px 8px; border: 1px solid #2c3e50; font-weight: bold; text-transform: uppercase; }
+        td { padding: 12px 8px; border: 1px solid #d0d7de; color: #333; font-weight: 500; background-color: #fff; }
+        
+        .document-section { background: white; border: 1px solid #d0d7de; padding: 25px; border-radius: 4px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .document-section h3 { color: #1a2b4c; margin-top: 0; font-size: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+        .document-section img { max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2980b9; text-decoration: none; font-weight: bold; font-size: 13px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="header-siet">
+        <div class="header-left">
+            <div class="siet-logo">SIET</div>
+            <div class="siet-subtitle">Sistema de Información de la Educación para el Trabajo y le Desarrollo Humano</div>
+        </div>
+        <div class="header-right">
+            <span>Educación</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <a href="index.html" class="back-link">&larr; Volver al Buscador Principal</a>
+
+        <!-- Tabla de Resultados Oficial del Ministerio -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código del programa</th>
+                        <th>Nombre del programa</th>
+                        <th>Estado</th>
+                        <th>Primer nombre</th>
+                        <th>Segundo nombre</th>
+                        <th>Primer apellido</th>
+                        <th>Segundo apellido</th>
+                        <th>N° de identificación</th>
+                        <th>Código de institución</th>
+                        <th>Nombre de la institución</th>
+                        <th>Fecha de registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>003503</td>
+                        <td>PSICOLOGÍA</td>
+                        <td>GRADUADO</td>
+                        <td>MARIANA</td>
+                        <td>ANGEL</td>
+                        <td>AMORTEGUI</td>
+                        <td>BEJARANO</td>
+                        <td>52829284</td>
+                        <td>07384</td>
+                        <td>UNIVERSIDAD DE ANTIOQUIA</td>
+                        <td>05/08/2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Visualización del Acta o Diploma Original -->
+        <div class="document-section">
+            <h3>Visualización del Documento Verificado</h3>
+            <!-- Sube la imagen de esta acta a tu repositorio y asígnale este mismo nombre -->
+            <img src="Mariana.png" alt="Acta de Grado de Mariana Angel Amortegui Bejarano">
+        </div>
+
+    </div>
+
+</body>
+</html>
