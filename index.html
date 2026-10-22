@@ -8,18 +8,19 @@
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
         /* Encabezado exacto del SIET */
-        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; }
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 20px; }
         .siet-logo { font-size: 38px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
-        .siet-box { border: 1px dotted #555; padding: 5px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        .siet-box { border: 1px dotted #555; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
         
-        /* Imagen superior derecha con el escudo y educación */
-        .header-right-img { height: 48px; width: auto; display: block; }
+        /* Logo del ministerio superior derecho ajustado a la medida exacta */
+        .header-right-img { height: 48px; width: auto; display: block; object-fit: contain; }
 
-        .main-container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
+        /* Contenedor principal alineado y compacto */
+        .main-container { max-width: 650px; margin: 25px auto; padding: 0 15px; }
 
         /* Caja de Ingreso exacta con la pestaña flotante azul */
-        .login-wrapper { width: 420px; margin: 0 auto 35px auto; position: relative; margin-top: 15px; }
+        .login-wrapper { width: 100%; margin: 0 auto 25px auto; position: relative; margin-top: 15px; }
         .login-tab { 
             position: absolute; 
             top: -15px; 
@@ -36,7 +37,7 @@
         .login-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 35px 25px 25px 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); border-radius: 3px; }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
         .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 100px; }
-        .form-group input { width: 240px; padding: 7px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
+        .form-group input { width: 60%; padding: 7px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
         .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
         .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .btn-ingresar { background-color: #f59e0b; color: white; }
@@ -44,10 +45,10 @@
         .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
         .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #2563eb; text-decoration: underline; }
 
-        /* Imágenes de banners inferiores integradas exactamente */
-        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Imágenes inferiores ajustadas al ancho exacto del cuadro de login */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
         /* Panel de Consulta Interno (Tras Login) */
         #panelConsulta { display: none; }
@@ -70,14 +71,14 @@
 </head>
 <body>
 
-    <!-- Encabezado exacto con tu imagen de logo superior derecha -->
+    <!-- Encabezado exacto con tu nueva imagen de logo "images.png" -->
     <div class="header-siet">
         <div class="header-left">
             <div class="siet-logo">SIET</div>
             <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
         </div>
         <div>
-            <img class="header-right-img" src="logo-educacion.png" alt="Mineducación">
+            <img class="header-right-img" src="images.png" alt="Mineducación">
         </div>
     </div>
 
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-            <!-- Tus 3 imágenes reales organizadas en collage exacto -->
+            <!-- Tus 3 imágenes reales organizadas y proporcionadas -->
             <div class="banners-grid">
                 <div>
                     <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
