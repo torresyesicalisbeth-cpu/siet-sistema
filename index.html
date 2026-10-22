@@ -50,11 +50,10 @@
         .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
         .forgot-pass { display: block; margin-top: 12px; font-size: 12px; color: #1e40af; text-decoration: underline; }
 
-        /* Collage inferior sin ningún borde ni línea extraña */
-        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0; padding: 0; border: none; }
-        .banner-img { width: 100%; height: auto; display: block; border: none; outline: none; margin: 0; padding: 0; }
-        .banner-bottom-container { width: 100%; margin: 0; padding: 0; border: none; }
-        .banner-bottom-img { width: 100%; height: auto; display: block; border: none; outline: none; margin: 0; padding: 0; }
+        /* Estilo limpio original para las imágenes inferiores */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
         /* Panel de Consulta Interno (Tras Login) */
         #panelConsulta { display: none; }
@@ -112,7 +111,7 @@
                 </div>
             </div>
 
-            <!-- Banners inferiores totalmente limpios sin bordes -->
+            <!-- Banners inferiores con el diseño limpio original -->
             <div class="banners-grid">
                 <div>
                     <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
@@ -122,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="banner-bottom-container">
+            <div>
                 <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo">
             </div>
         </div>
