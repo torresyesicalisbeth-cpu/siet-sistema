@@ -8,54 +8,60 @@
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
         /* Encabezado exacto idéntico al original */
-        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-left { display: flex; align-items: center; gap: 20px; }
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
         
-        /* Logo superior izquierdo (puedes subir la imagen o usa el texto institucional exacto en azul) */
-        .logo-colombia-text { font-size: 11px; font-weight: bold; color: #333; line-height: 1.1; text-transform: uppercase; border-right: 2px solid #ccc; padding-right: 15px; }
+        /* Imagen pequeña izquierda (colp.jpg) */
+        .header-left-img { height: 40px; width: auto; object-fit: contain; }
         
-        /* SIET en Azul Corporativo Exacto */
-        .siet-logo { font-size: 42px; font-weight: bold; color: #1e3a8a; letter-spacing: 2px; }
+        /* SIET en Azul Turquí exacto */
+        .siet-logo { font-size: 45px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
         
-        /* Caja punteada original del texto descriptivo */
-        .siet-box { border: 1px dotted #555; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        /* Caja descriptiva con el recuadro punteado exacto */
+        .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
         
-        /* Logo superior derecho (images.png) */
-        .header-right-img { height: 45px; width: auto; display: block; object-fit: contain; }
+        /* Imagen superior derecha (images.png) */
+        .header-right-img { height: 45px; width: auto; object-fit: contain; }
 
-        /* Contenedor central ajustado al ancho exacto del portal original */
-        .main-container { max-width: 750px; margin: 30px auto; padding: 0 15px; }
+        /* Contenedor central ancho para que los banners inferiores manden el tamaño */
+        .main-container { max-width: 900px; margin: 25px auto; padding: 0 15px; }
 
-        /* Caja de Ingreso con la pestaña flotante azul */
-        .login-wrapper { width: 100%; margin: 0 auto 30px auto; position: relative; margin-top: 15px; }
+        /* Cuadro de Ingreso flotante con sombras y más pequeño que los banners */
+        .login-wrapper { width: 480px; margin: 0 auto 25px auto; position: relative; margin-top: 15px; }
         .login-tab { 
             position: absolute; 
-            top: -16px; 
-            left: 20px; 
-            background: #2563eb; 
+            top: -15px; 
+            left: 15px; 
+            background: #1e40af; 
             color: white; 
-            padding: 5px 18px; 
+            padding: 5px 16px; 
             font-size: 13px; 
             font-weight: bold; 
             border-top-left-radius: 3px; 
             border-top-right-radius: 3px; 
             box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
-        .login-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 35px 25px 25px 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); border-radius: 3px; }
-        .form-group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
+        .login-box { 
+            background: #f8fafc; 
+            border: 1px solid #cbd5e1; 
+            padding: 30px 25px 20px 25px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            border-radius: 3px; 
+        }
+        .form-group { margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
         .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 100px; }
-        .form-group input { width: 65%; padding: 7px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
-        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+        .form-group input { width: 65%; padding: 6px 8px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
+        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 15px; }
         .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .btn-ingresar { background-color: #f59e0b; color: white; }
         .btn-ingresar:hover { background-color: #d97706; }
         .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
-        .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #2563eb; text-decoration: underline; }
+        .forgot-pass { display: block; margin-top: 12px; font-size: 12px; color: #1e40af; text-decoration: underline; }
 
-        /* Collage de imágenes inferiores simétricas y proporcionadas */
-        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Collage de imágenes inferiores simétricas y más anchas que el login */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 0; border: 1px solid #0077b6; }
+        .banner-img { width: 100%; height: auto; display: block; }
+        .banner-bottom-img { width: 100%; height: auto; display: block; border: 1px solid #0077b6; border-top: none; }
 
         /* Panel de Consulta Interno (Tras Login) */
         #panelConsulta { display: none; }
@@ -78,10 +84,10 @@
 </head>
 <body>
 
-    <!-- Encabezado exacto -->
+    <!-- Encabezado exacto con colp.jpg a la izquierda y images.png a la derecha -->
     <div class="header-siet">
         <div class="header-left">
-            <div class="logo-colombia-text">COLOMBIA<br>POTENCIA DE LA<br>VIDA</div>
+            <img class="header-left-img" src="colp.jpg" alt="Colombia Potencia de la Vida">
             <div class="siet-logo">SIET</div>
             <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
         </div>
@@ -113,7 +119,7 @@
                 </div>
             </div>
 
-            <!-- Tus 3 imágenes reales organizadas en collage simétrico exacto -->
+            <!-- Tus 3 imágenes reales organizadas en collage exacto -->
             <div class="banners-grid">
                 <div>
                     <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
