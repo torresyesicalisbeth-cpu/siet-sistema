@@ -7,73 +7,71 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
         
-        /* Encabezado superior */
-        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        /* Encabezado idéntico al SIET real */
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo-colombia { height: 45px; width: auto; }
         .siet-logo { font-size: 38px; font-weight: bold; color: #1a2b4c; letter-spacing: 2px; }
-        .siet-box { border: 1px solid #7f8c8d; padding: 5px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
+        .siet-box { border: 1px dotted #555; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; }
         
-        /* Bloque superior derecho con el escudo real de Colombia en SVG incrustado */
-        .header-right-block { display: flex; align-items: stretch; height: 46px; border: 1px solid #d0d7de; }
-        .block-escudo { background: #fdfdfd; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
-        .block-escudo svg { height: 36px; width: auto; }
-        .block-lema { background: #0056b3; color: white; display: flex; align-items: center; padding: 0 15px; font-size: 12px; font-weight: bold; text-align: center; line-height: 1.2; }
-        .block-min { background: #3399ff; color: white; display: flex; align-items: center; padding: 0 18px; font-size: 13px; font-weight: bold; }
+        .header-right-exact { display: flex; align-items: center; gap: 10px; border: 1px solid #d0d7de; padding: 4px 10px; background: #fff; }
+        .header-right-exact img { height: 36px; width: auto; }
+        .header-right-exact span { font-size: 18px; font-weight: bold; color: #b91c1c; }
 
-        .main-container { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
+        .main-container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
 
-        /* Cuadro de Ingreso con pestaña flotante exacta */
-        .login-wrapper { width: 420px; margin: 0 auto 40px auto; position: relative; margin-top: 20px; }
+        /* Caja de Ingreso exacta con la pestaña flotante azul */
+        .login-wrapper { width: 420px; margin: 0 auto 40px auto; position: relative; margin-top: 15px; }
         .login-tab { 
             position: absolute; 
-            top: -16px; 
-            left: 20px; 
-            background: #0056b3; 
+            top: -15px; 
+            left: 15px; 
+            background: #2563eb; 
             color: white; 
-            padding: 6px 18px; 
+            padding: 5px 16px; 
             font-size: 13px; 
             font-weight: bold; 
-            border-top-left-radius: 4px; 
-            border-top-right-radius: 4px; 
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            border-top-left-radius: 3px; 
+            border-top-right-radius: 3px; 
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
-        .login-box { background: #f4f6f8; border: 1px solid #cbd5e1; padding: 35px 25px 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 4px; }
+        .login-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 35px 25px 25px 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); border-radius: 3px; }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
         .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 100px; }
-        .form-group input { width: 240px; padding: 8px; border: 1px solid #94a3b8; border-radius: 3px; font-size: 13px; background: #fff; }
+        .form-group input { width: 240px; padding: 7px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
         .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
-        .btn { padding: 7px 18px; border: none; border-radius: 3px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
         .btn-ingresar { background-color: #f59e0b; color: white; }
         .btn-ingresar:hover { background-color: #d97706; }
         .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
-        .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #0056b3; text-decoration: underline; }
+        .forgot-pass { display: block; margin-top: 15px; font-size: 12px; color: #2563eb; text-decoration: underline; }
 
-        /* Banners inferiores profesionales estilo corporativo */
+        /* Banners inferiores idénticos a la interfaz oficial */
         .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .banner-card { background: #0077b6; color: white; padding: 20px; display: flex; align-items: center; gap: 15px; border-radius: 3px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
+        .banner-card { background: #0077b6; color: white; padding: 18px 15px; display: flex; align-items: center; gap: 12px; border-radius: 2px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .banner-card:hover { background: #005f87; }
-        .banner-icon-box { border: 2px solid white; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .banner-icon-box svg { width: 22px; height: 22px; fill: white; }
-        .banner-text { font-size: 15px; font-weight: bold; line-height: 1.3; }
+        .banner-icon-box { border: 2px solid white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .banner-icon-box svg { width: 20px; height: 20px; fill: white; }
+        .banner-text { font-size: 14px; font-weight: bold; line-height: 1.2; }
 
-        .banner-bottom { background: #005f87; color: white; padding: 22px 25px; display: flex; align-items: center; gap: 20px; border-radius: 3px; }
-        .banner-bottom svg { width: 32px; height: 32px; fill: white; flex-shrink: 0; }
-        .banner-bottom-text { font-size: 18px; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
+        .banner-bottom { background: #0077b6; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; border-radius: 2px; }
+        .banner-bottom-left { display: flex; align-items: center; gap: 15px; }
+        .banner-bottom-text { font-size: 17px; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
 
         /* Panel de Consulta Interno (Tras Login) */
         #panelConsulta { display: none; }
-        .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 4px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
         .search-group label { font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; }
-        .search-select, .search-input { padding: 8px 12px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 3px; background: #fff; width: 220px; }
-        .btn-buscar { background-color: #0056b3; color: white; border: none; padding: 9px 22px; font-size: 13px; font-weight: bold; border-radius: 3px; cursor: pointer; text-transform: uppercase; }
-        .btn-buscar:hover { background-color: #004085; }
+        .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
+        .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
+        .btn-buscar:hover { background-color: #111827; }
         .logout-link { float: right; color: #dc2626; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
 
-        /* Tabla de Resultados Oficial del Ministerio */
+        /* Tabla de Resultados Oficial */
         .results-container { display: none; margin-top: 20px; }
-        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
         th { background-color: #1e3a8a; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
         td { padding: 14px 6px; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 500; background-color: #fff; }
@@ -81,24 +79,16 @@
 </head>
 <body>
 
-    <!-- Encabezado exacto -->
+    <!-- Encabezado exacto del SIET -->
     <div class="header-siet">
         <div class="header-left">
+            <img class="logo-colombia" src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Colombia_Potencia_de_la_Vida_%28logo%29.svg" alt="Colombia Potencia de la Vida" onerror="this.style.display='none'">
             <div class="siet-logo">SIET</div>
             <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
         </div>
-        <div class="header-right-block">
-            <div class="block-escudo">
-                <!-- Escudo de Colombia vectorial incorporado (sin depender de enlaces externos) -->
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#fcd116" d="M0 0h500v500H0z"/>
-                    <path fill="#003893" d="M0 166h500v334H0z"/>
-                    <path fill="#ce1126" d="M0 333h500v167H0z"/>
-                    <circle cx="250" cy="250" r="120" fill="#fff" stroke="#333" stroke-width="4"/>
-                </svg>
-            </div>
-            <div class="block-lema">La educación<br>es de todos</div>
-            <div class="block-min">Mineducación</div>
+        <div class="header-right-exact">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Coat_of_arms_of_Colombia.svg" alt="Escudo">
+            <span>Educación</span>
         </div>
     </div>
 
@@ -125,7 +115,7 @@
                 </div>
             </div>
 
-            <!-- Banners inferiores limpios con iconos vectoriales reales -->
+            <!-- Banners inferiores idénticos -->
             <div class="banners-grid">
                 <div class="banner-card">
                     <div class="banner-icon-box">
@@ -142,8 +132,11 @@
             </div>
 
             <div class="banner-bottom">
-                <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-                <div class="banner-bottom-text">EDUCACIÓN PARA EL TRABAJO Y EL DESARROLLO HUMANO</div>
+                <div class="banner-bottom-left">
+                    <svg style="width:28px;height:28px;fill:white;" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    <div class="banner-bottom-text">EDUCACIÓN PARA EL TRABAJO Y EL DESARROLLO HUMANO</div>
+                </div>
+                <svg style="width:24px;height:24px;fill:white;opacity:0.8;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
             </div>
         </div>
 
