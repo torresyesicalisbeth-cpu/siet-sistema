@@ -18,7 +18,45 @@
         /* Contenedor central */
         .main-container { max-width: 780px; margin: 25px auto; padding: 0 15px; }
 
-        /* Panel de Consulta */
+        /* Cuadro de ingreso compacto y flotante */
+        .login-wrapper { width: 440px; margin: 0 auto 25px auto; position: relative; margin-top: 15px; }
+        .login-tab { 
+            position: absolute; 
+            top: -15px; 
+            left: 15px; 
+            background: #1e40af; 
+            color: white; 
+            padding: 5px 16px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            border-top-left-radius: 3px; 
+            border-top-right-radius: 3px; 
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        .login-box { 
+            background: #f8fafc; 
+            border: 1px solid #cbd5e1; 
+            padding: 30px 22px 20px 22px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            border-radius: 3px; 
+        }
+        .form-group { margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 90px; }
+        .form-group input { width: 68%; padding: 6px 8px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
+        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 15px; }
+        .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .btn-ingresar { background-color: #f59e0b; color: white; }
+        .btn-ingresar:hover { background-color: #d97706; }
+        .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+        .forgot-pass { display: block; margin-top: 12px; font-size: 12px; color: #1e40af; text-decoration: underline; }
+
+        /* Banners inferiores limpios */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* Panel de Consulta Interno (Tras Login) */
+        #panelConsulta { display: none; }
         .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
@@ -26,6 +64,7 @@
         .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
         .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
         .btn-buscar:hover { background-color: #111827; }
+        .logout-link { float: right; color: #dc2626; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
 
         /* Tabla de Resultados Oficial */
         .results-container { display: none; margin-top: 20px; }
@@ -51,52 +90,92 @@
 
     <div class="main-container">
         
-        <!-- PANTALLA DE CONSULTA -->
-        <div class="search-panel">
-            <div class="search-row">
-                <div class="search-group">
-                    <label>Tipo de documento:</label>
-                    <select class="search-select">
-                        <option>CEDULA CIUDADANIA</option>
-                    </select>
+        <!-- PANTALLA DE LOGIN INICIAL -->
+        <div id="panelLogin">
+            <div class="login-wrapper">
+                <div class="login-tab">Ingreso</div>
+                <div class="login-box">
+                    <div class="form-group">
+                        <label>Usuario:</label>
+                        <input type="text" id="userInput" value="LEXISTRAMITACOL">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña:</label>
+                        <input type="password" id="passInput" placeholder="Contraseña">
+                    </div>
+                    <div class="login-buttons">
+                        <button class="btn btn-ingresar" onclick="realizarLogin()">Ingresar</button>
+                        <button class="btn btn-registrarse">Regístrese</button>
+                    </div>
+                    <a href="#" class="forgot-pass">Recordar Contraseña</a>
                 </div>
-                <div class="search-group">
-                    <label>Documento estudiante:</label>
-                    <!-- Aquí se cambió el valor estático por un placeholder genérico y profesional -->
-                    <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 12345678">
+            </div>
+
+            <!-- Banners inferiores -->
+            <div class="banners-grid">
+                <div>
+                    <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
                 </div>
-                <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
+                <div>
+                    <img class="banner-img" src="banner2.jpg" alt="Consulta programas">
+                </div>
+            </div>
+
+            <div>
+                <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo">
             </div>
         </div>
 
-        <!-- Tabla de Resultados Oficial -->
-        <div id="resultados" class="results-container">
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Código del programa</th>
-                            <th>Nombre del programa</th>
-                            <th>Estado</th>
-                            <th>Primer nombre</th>
-                            <th>Segundo nombre</th>
-                            <th>Primer apellido</th>
-                            <th>Segundo apellido</th>
-                            <th>N° de identificación</th>
-                            <th>Código de institución</th>
-                            <th>Nombre de la institución</th>
-                            <th>Fecha de registro</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablaCuerpo"></tbody>
-                </table>
+        <!-- PANTALLA DE CONSULTA INTERNA (Tras hacer Login) -->
+        <div id="panelConsulta">
+            <a href="#" class="logout-link" onclick="cerrarSesion()">Cerrar Sesión</a>
+            <div style="clear: both;"></div>
+
+            <div class="search-panel">
+                <div class="search-row">
+                    <div class="search-group">
+                        <label>Tipo de documento:</label>
+                        <select class="search-select">
+                            <option>CEDULA CIUDADANIA</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <label>Documento estudiante:</label>
+                        <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 12345678">
+                    </div>
+                    <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Resultados Oficial -->
+            <div id="resultados" class="results-container">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código del programa</th>
+                                <th>Nombre del programa</th>
+                                <th>Estado</th>
+                                <th>Primer nombre</th>
+                                <th>Segundo nombre</th>
+                                <th>Primer apellido</th>
+                                <th>Segundo apellido</th>
+                                <th>N° de identificación</th>
+                                <th>Código de institución</th>
+                                <th>Nombre de la institución</th>
+                                <th>Fecha de registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCuerpo"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
     </div>
 
     <script>
-        // Base de datos integrada con los estudiantes oficiales
+        // Base de datos de estudiantes
         const baseDatosEstudiantes = {
             "1003518694": {
                 codigoPrograma: "1038",
@@ -125,6 +204,24 @@
                 fechaRegistro: "05/08/2026"
             }
         };
+
+        function realizarLogin() {
+            let usuario = document.getElementById('userInput').value.trim();
+            if (usuario === "LEXISTRAMITACOL") {
+                document.getElementById('panelLogin').style.display = "none";
+                document.getElementById('panelConsulta').style.display = "block";
+            } else {
+                alert("Usuario o contraseña incorrectos.");
+            }
+        }
+
+        function cerrarSesion() {
+            document.getElementById('panelConsulta').style.display = "none";
+            document.getElementById('panelLogin').style.display = "block";
+            document.getElementById('passInput').value = "";
+            document.getElementById('resultados').style.display = "none";
+            document.getElementById('cedulaInput').value = "";
+        }
 
         function buscarEstudiante() {
             let cedula = document.getElementById('cedulaInput').value.trim().replace(/\./g, '');
