@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .header-left-img { height: 42px; width: auto; object-fit: contain; }
+        .siet-logo { font-size: 44px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
+        .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
+        .header-right-img { height: 45px; width: auto; object-fit: contain; }
+        .main-container { max-width: 900px; margin: 25px auto; padding: 0 15px; }
+        
+        .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .search-group { display: flex; align-items: center; gap: 10px; }
+        .search-group label { font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; }
+        .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
+        .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
+        
+        .results-container { margin-top: 20px; }
+        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
+        th { background-color: #1e3a8a; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
+        td { padding: 14px 6px; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 500; background-color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="header-siet">
+        <div class="header-left">
+            <img class="header-left-img" src="colp.jpg" alt="Colombia Potencia de la Vida">
+            <div class="siet-logo">SIET</div>
+            <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
+        </div>
+        <div>
+            <img class="header-right-img" src="images.png" alt="Mineducación">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="search-panel">
+            <div class="search-row">
+                <div class="search-group">
+                    <label>Tipo de documento:</label>
+                    <select class="search-select">
+                        <option>CEDULA CIUDADANIA</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <label>Documento estudiante:</label>
+                    <input type="text" value="1003518694" class="search-input">
+                </div>
+                <button type="button" class="btn-buscar">BUSCAR &rarr;</button>
+            </div>
+        </div>
+
+        <div class="results-container">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código del programa</th>
+                            <th>Nombre del programa</th>
+                            <th>Estado</th>
+                            <th>Primer nombre</th>
+                            <th>Segundo nombre</th>
+                            <th>Primer apellido</th>
+                            <th>Segundo apellido</th>
+                            <th>N° de identificación</th>
+                            <th>Código de institución</th>
+                            <th>Nombre de la institución</th>
+                            <th>Fecha de registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1038</td>
+                            <td>INGENIERÍA CIVIL</td>
+                            <td>GRADUADO</td>
+                            <td>JOSEPH</td>
+                            <td>ALEJANDRO</td>
+                            <td>CORTES</td>
+                            <td>ORTIZ</td>
+                            <td>1003518694</td>
+                            <td>1101</td>
+                            <td>PONTIFICIA UNIVERSIDAD JAVERIANA</td>
+                            <td>07/12/2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
