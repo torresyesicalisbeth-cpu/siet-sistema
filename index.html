@@ -6,57 +6,14 @@
     <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
-        
-        /* Cabecera idéntica a la oficial */
         .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .header-left-img { height: 42px; width: auto; object-fit: contain; }
         .siet-logo { font-size: 44px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
         .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
         .header-right-img { height: 45px; width: auto; object-fit: contain; }
-
-        /* Contenedor central */
         .main-container { max-width: 780px; margin: 25px auto; padding: 0 15px; }
-
-        /* Cuadro de ingreso compacto y flotante */
-        .login-wrapper { width: 440px; margin: 0 auto 25px auto; position: relative; margin-top: 15px; }
-        .login-tab { 
-            position: absolute; 
-            top: -15px; 
-            left: 15px; 
-            background: #1e40af; 
-            color: white; 
-            padding: 5px 16px; 
-            font-size: 13px; 
-            font-weight: bold; 
-            border-top-left-radius: 3px; 
-            border-top-right-radius: 3px; 
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-        }
-        .login-box { 
-            background: #f8fafc; 
-            border: 1px solid #cbd5e1; 
-            padding: 30px 22px 20px 22px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            border-radius: 3px; 
-        }
-        .form-group { margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-        .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 90px; }
-        .form-group input { width: 68%; padding: 6px 8px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
-        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 15px; }
-        .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
-        .btn-ingresar { background-color: #f59e0b; color: white; }
-        .btn-ingresar:hover { background-color: #d97706; }
-        .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
-        .forgot-pass { display: block; margin-top: 12px; font-size: 12px; color: #1e40af; text-decoration: underline; }
-
-        /* Estilo limpio original para las imágenes inferiores */
-        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-        /* Panel de Consulta Interno (Tras Login) */
-        #panelConsulta { display: none; }
+        
         .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
@@ -64,9 +21,7 @@
         .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
         .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
         .btn-buscar:hover { background-color: #111827; }
-        .logout-link { float: right; color: #dc2626; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
 
-        /* Tabla de Resultados Oficial */
         .results-container { display: none; margin-top: 20px; }
         .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
@@ -76,7 +31,6 @@
 </head>
 <body>
 
-    <!-- Encabezado exacto -->
     <div class="header-siet">
         <div class="header-left">
             <img class="header-left-img" src="colp.jpg" alt="Colombia Potencia de la Vida">
@@ -89,93 +43,62 @@
     </div>
 
     <div class="main-container">
-        
-        <!-- PANTALLA DE LOGIN -->
-        <div id="panelLogin">
-            <div class="login-wrapper">
-                <div class="login-tab">Ingreso</div>
-                <div class="login-box">
-                    <div class="form-group">
-                        <label>Usuario:</label>
-                        <input type="text" id="userInput" value="LEXISTRAMITACOL">
-                    </div>
-                    <div class="form-group">
-                        <label>Contraseña:</label>
-                        <input type="password" id="passInput" placeholder="Contraseña">
-                    </div>
-                    <div class="login-buttons">
-                        <button class="btn btn-ingresar" onclick="realizarLogin()">Ingresar</button>
-                        <button class="btn btn-registrarse">Regístrese</button>
-                    </div>
-                    <a href="#" class="forgot-pass">Recordar Contraseña</a>
+        <div class="search-panel">
+            <div class="search-row">
+                <div class="search-group">
+                    <label>Tipo de documento:</label>
+                    <select class="search-select">
+                        <option>CEDULA CIUDADANIA</option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Banners inferiores con el diseño limpio original -->
-            <div class="banners-grid">
-                <div>
-                    <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
+                <div class="search-group">
+                    <label>Documento estudiante:</label>
+                    <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 1003518694">
                 </div>
-                <div>
-                    <img class="banner-img" src="banner2.jpg" alt="Consulta programas">
-                </div>
-            </div>
-
-            <div>
-                <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo">
+                <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
             </div>
         </div>
 
-        <!-- PANTALLA DE CONSULTA INTERNA (Tras Login) -->
-        <div id="panelConsulta">
-            <a href="#" class="logout-link" onclick="cerrarSesion()">Cerrar Sesión</a>
-            <div style="clear: both;"></div>
-
-            <div class="search-panel">
-                <div class="search-row">
-                    <div class="search-group">
-                        <label>Tipo de documento:</label>
-                        <select class="search-select">
-                            <option>CEDULA CIUDADANIA</option>
-                        </select>
-                    </div>
-                    <div class="search-group">
-                        <label>Documento estudiante:</label>
-                        <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 52829284">
-                    </div>
-                    <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
-                </div>
-            </div>
-
-            <!-- Tabla de Resultados Oficial -->
-            <div id="resultados" class="results-container">
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Código del programa</th>
-                                <th>Nombre del programa</th>
-                                <th>Estado</th>
-                                <th>Primer nombre</th>
-                                <th>Segundo nombre</th>
-                                <th>Primer apellido</th>
-                                <th>Segundo apellido</th>
-                                <th>N° de identificación</th>
-                                <th>Código de institución</th>
-                                <th>Nombre de la institución</th>
-                                <th>Fecha de registro</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaCuerpo"></tbody>
-                    </table>
-                </div>
+        <div id="resultados" class="results-container">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código del programa</th>
+                            <th>Nombre del programa</th>
+                            <th>Estado</th>
+                            <th>Primer nombre</th>
+                            <th>Segundo nombre</th>
+                            <th>Primer apellido</th>
+                            <th>Segundo apellido</th>
+                            <th>N° de identificación</th>
+                            <th>Código de institución</th>
+                            <th>Nombre de la institución</th>
+                            <th>Fecha de registro</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCuerpo"></tbody>
+                </table>
             </div>
         </div>
-
     </div>
 
     <script>
+        // Base de datos de estudiantes habilitados en la página
         const baseDatosEstudiantes = {
+            "1003518694": {
+                codigoPrograma: "1038",
+                nombrePrograma: "INGENIERÍA CIVIL",
+                estado: "GRADUADO",
+                primerNombre: "JOSEPH",
+                segundoNombre: "ALEJANDRO",
+                primerApellido: "CORTES",
+                segundoApellido: "ORTIZ",
+                numIdentificacion: "1003518694",
+                codigoInstitucion: "1101",
+                nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
+                fechaRegistro: "07/12/2025"
+            },
             "52829284": {
                 codigoPrograma: "003503",
                 nombrePrograma: "PSICOLOGÍA",
@@ -188,64 +111,8 @@
                 codigoInstitucion: "07384",
                 nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
                 fechaRegistro: "05/08/2026"
-            },
-            "80083923": {
-                codigoPrograma: "7731",
-                nombrePrograma: "INGENIERÍA DE SISTEMAS",
-                estado: "GRADUADO",
-                primerNombre: "ALEJANDRO",
-                segundoNombre: "DE SALVADOR",
-                primerApellido: "AHUMADA",
-                segundoApellido: "",
-                numIdentificacion: "80083923",
-                codigoInstitucion: "1027",
-                nombreInstitucion: "FUNDACIÓN UNIVERSITARIA DEL ÁREA ANDINA",
-                fechaRegistro: "07/11/2024"
-            },
-            "1124867540": {
-                codigoPrograma: "7731",
-                nombrePrograma: "INGENIERÍA DE SISTEMAS",
-                estado: "GRADUADO",
-                primerNombre: "ESTEBAN",
-                segundoNombre: "CAMILO",
-                primerApellido: "HERNANDEZ",
-                segundoApellido: "RUIZ",
-                numIdentificacion: "1124867540",
-                codigoInstitucion: "1027",
-                nombreInstitucion: "FUNDACIÓN UNIVERSITARIA DEL ÁREA ANDINA",
-                fechaRegistro: "07/11/2017"
-            },
-            "9296180": {
-                codigoPrograma: "7731",
-                nombrePrograma: "INGENIERíA MECATRÓNICA",
-                estado: "GRADUADO",
-                primerNombre: "RONYS",
-                segundoNombre: "JOSE",
-                primerApellido: "GUTIERREZ",
-                segundoApellido: "ZABALETA",
-                numIdentificacion: "9,296.180",
-                codigoInstitucion: "1027",
-                nombreInstitucion: "UNIVERSIDAD AUTÓNOMA DE BUCARAMANGA",
-                fechaRegistro: "27/11/2006"
             }
         };
-
-        function realizarLogin() {
-            let usuario = document.getElementById('userInput').value.trim();
-            if (usuario === "LEXISTRAMITACOL") {
-                document.getElementById('panelLogin').style.display = "none";
-                document.getElementById('panelConsulta').style.display = "block";
-            } else {
-                alert("Usuario o contraseña incorrectos.");
-            }
-        }
-
-        function cerrarSesion() {
-            document.getElementById('panelConsulta').style.display = "none";
-            document.getElementById('panelLogin').style.display = "block";
-            document.getElementById('passInput').value = "";
-            document.getElementById('resultados').style.display = "none";
-        }
 
         function buscarEstudiante() {
             let cedula = document.getElementById('cedulaInput').value.trim().replace(/\./g, '');
