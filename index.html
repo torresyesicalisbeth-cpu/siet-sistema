@@ -6,14 +6,19 @@
     <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+        
+        /* Cabecera idéntica a la oficial */
         .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .header-left-img { height: 42px; width: auto; object-fit: contain; }
         .siet-logo { font-size: 44px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
         .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
         .header-right-img { height: 45px; width: auto; object-fit: contain; }
+
+        /* Contenedor central */
         .main-container { max-width: 780px; margin: 25px auto; padding: 0 15px; }
-        
+
+        /* Panel de Consulta */
         .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .search-group { display: flex; align-items: center; gap: 10px; }
@@ -22,6 +27,7 @@
         .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
         .btn-buscar:hover { background-color: #111827; }
 
+        /* Tabla de Resultados Oficial */
         .results-container { display: none; margin-top: 20px; }
         .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
@@ -31,6 +37,7 @@
 </head>
 <body>
 
+    <!-- Encabezado exacto -->
     <div class="header-siet">
         <div class="header-left">
             <img class="header-left-img" src="colp.jpg" alt="Colombia Potencia de la Vida">
@@ -43,6 +50,8 @@
     </div>
 
     <div class="main-container">
+        
+        <!-- PANTALLA DE CONSULTA -->
         <div class="search-panel">
             <div class="search-row">
                 <div class="search-group">
@@ -53,12 +62,14 @@
                 </div>
                 <div class="search-group">
                     <label>Documento estudiante:</label>
-                    <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 1003518694">
+                    <!-- Aquí se cambió el valor estático por un placeholder genérico y profesional -->
+                    <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 12345678">
                 </div>
                 <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
             </div>
         </div>
 
+        <!-- Tabla de Resultados Oficial -->
         <div id="resultados" class="results-container">
             <div class="table-responsive">
                 <table>
@@ -81,10 +92,11 @@
                 </table>
             </div>
         </div>
+
     </div>
 
     <script>
-        // Base de datos de estudiantes habilitados en la página
+        // Base de datos integrada con los estudiantes oficiales
         const baseDatosEstudiantes = {
             "1003518694": {
                 codigoPrograma: "1038",
