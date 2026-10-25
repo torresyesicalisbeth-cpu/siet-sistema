@@ -12,7 +12,7 @@
         .siet-logo { font-size: 44px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
         .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
         .header-right-img { height: 45px; width: auto; object-fit: contain; }
-        .main-container { max-width: 900px; margin: 25px auto; padding: 0 15px; }
+        .main-container { max-width: 780px; margin: 25px auto; padding: 0 15px; }
         
         .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
@@ -20,8 +20,9 @@
         .search-group label { font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; }
         .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
         .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
-        
-        .results-container { margin-top: 20px; }
+        .btn-buscar:hover { background-color: #111827; }
+
+        .results-container { display: none; margin-top: 20px; }
         .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
         th { background-color: #1e3a8a; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
@@ -52,13 +53,13 @@
                 </div>
                 <div class="search-group">
                     <label>Documento estudiante:</label>
-                    <input type="text" value="1003518694" class="search-input">
+                    <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 1003518694">
                 </div>
-                <button type="button" class="btn-buscar">BUSCAR &rarr;</button>
+                <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
             </div>
         </div>
 
-        <div class="results-container">
+        <div id="resultados" class="results-container">
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -76,25 +77,76 @@
                             <th>Fecha de registro</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1038</td>
-                            <td>INGENIERÍA CIVIL</td>
-                            <td>GRADUADO</td>
-                            <td>JOSEPH</td>
-                            <td>ALEJANDRO</td>
-                            <td>CORTES</td>
-                            <td>ORTIZ</td>
-                            <td>1003518694</td>
-                            <td>1101</td>
-                            <td>PONTIFICIA UNIVERSIDAD JAVERIANA</td>
-                            <td>07/12/2025</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="tablaCuerpo"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
+    <script>
+        const baseDatosEstudiantes = {
+            "1003518694": {
+                codigoPrograma: "1038",
+                nombrePrograma: "INGENIERÍA CIVIL",
+                estado: "GRADUADO",
+                primerNombre: "JOSEPH",
+                segundoNombre: "ALEJANDRO",
+                primerApellido: "CORTES",
+                segundoApellido: "ORTIZ",
+                numIdentificacion: "1003518694",
+                codigoInstitucion: "1101",
+                nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
+                fechaRegistro: "07/12/2025"
+            },
+            "52829284": {
+                codigoPrograma: "003503",
+                nombrePrograma: "PSICOLOGÍA",
+                estado: "GRADUADO",
+                primerNombre: "MARIANA",
+                segundoNombre: "ANGEL",
+                primerApellido: "AMORTEGUI",
+                segundoApellido: "BEJARANO",
+                numIdentificacion: "52829284",
+                codigoInstitucion: "07384",
+                nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
+                fechaRegistro: "05/08/2026"
+            }
+        };
+
+        function buscarEstudiante() {
+            let cedula = document.getElementById('cedulaInput').value.trim().replace(/\./g, '');
+            let contenedorResultados = document.getElementById('resultados');
+            let cuerpoTabla = document.getElementById('tablaCuerpo');
+
+            if (!cedula) {
+                alert("Por favor ingrese un número de identificación.");
+                return;
+            }
+
+            let estudiante = baseDatosEstudiantes[cedula];
+
+            if (estudiante) {
+                cuerpoTabla.innerHTML = `
+                    <tr>
+                        <td>${estudiante.codigoPrograma}</td>
+                        <td>${estudiante.nombrePrograma}</td>
+                        <td>${estudiante.estado}</td>
+                        <td>${estudiante.primerNombre}</td>
+                        <td>${estudiante.segundoNombre}</td>
+                        <td>${estudiante.primerApellido}</td>
+                        <td>${estudiante.segundoApellido}</td>
+                        <td>${estudiante.numIdentificacion}</td>
+                        <td>${estudiante.codigoInstitucion}</td>
+                        <td>${estudiante.nombreInstitucion}</td>
+                        <td>${estudiante.fechaRegistro}</td>
+                    </tr>
+                `;
+                contenedorResultados.style.display = "block";
+            } else {
+                contenedorResultados.style.display = "block";
+                cuerpoTabla.innerHTML = `<tr><td colspan="11" style="color: red; padding: 20px; font-weight: bold;">No se encontró ningún registro asociado al número de documento ingresado.</td></tr>`;
+            }
+        }
+    </script>
 </body>
 </html>
