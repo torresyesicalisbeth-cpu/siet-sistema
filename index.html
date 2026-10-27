@@ -55,7 +55,7 @@
         .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-        /* Panel de Consulta Interno (Tras Login) */
+        /* Panel de Consulta Interno (Tras hacer Login) */
         #panelConsulta { display: none; }
         .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
@@ -68,9 +68,9 @@
 
         /* Tabla de Resultados Oficial */
         .results-container { display: none; margin-top: 20px; }
-        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e3a8a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e40af; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
-        th { background-color: #1e3a8a; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
+        th { background-color: #1e40af; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
         td { padding: 14px 6px; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 500; background-color: #fff; }
     </style>
 </head>
@@ -91,7 +91,7 @@
     <div class="main-container">
         
         <!-- PANTALLA DE LOGIN INICIAL -->
-        <div id="panelLogin">
+        <div id="panelLogin" style="display: block;">
             <div class="login-wrapper">
                 <div class="login-tab">Ingreso</div>
                 <div class="login-box">
@@ -175,8 +175,21 @@
     </div>
 
     <script>
-        // Base de datos de estudiantes
+        // Base de datos actualizada con Gerson Guillermo Peña Pava
         const baseDatosEstudiantes = {
+            "86045211": {
+                codigoPrograma: "002174",
+                nombrePrograma: "PROFESIONAL EN GESTIÓN DE LA SEGURIDAD Y LA SALUD LABORAL",
+                estado: "GRADUADO",
+                primerNombre: "GERSON",
+                segundoNombre: "GUILLERMO",
+                primerApellido: "PEÑA",
+                segundoApellido: "PAVA",
+                numIdentificacion: "86045211",
+                codigoInstitucion: "1208",
+                nombreInstitucion: "POLITÉCNICO GRANCOLOMBIANO",
+                fechaRegistro: "20/10/2025"
+            },
             "1003518694": {
                 codigoPrograma: "1038",
                 nombrePrograma: "INGENIERÍA CIVIL",
