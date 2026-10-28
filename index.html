@@ -175,47 +175,66 @@
     </div>
 
     <script>
-        // Base de datos actualizada con Gerson Guillermo Peña Pava
+        // Base de datos con los registros ordenados por fecha de grado
         const baseDatosEstudiantes = {
-            "86045211": {
-                codigoPrograma: "002174",
-                nombrePrograma: "PROFESIONAL EN GESTIÓN DE LA SEGURIDAD Y LA SALUD LABORAL",
-                estado: "GRADUADO",
-                primerNombre: "GERSON",
-                segundoNombre: "GUILLERMO",
-                primerApellido: "PEÑA",
-                segundoApellido: "PAVA",
-                numIdentificacion: "86045211",
-                codigoInstitucion: "1208",
-                nombreInstitucion: "POLITÉCNICO GRANCOLOMBIANO",
-                fechaRegistro: "20/10/2025"
-            },
-            "1003518694": {
-                codigoPrograma: "1038",
-                nombrePrograma: "INGENIERÍA CIVIL",
-                estado: "GRADUADO",
-                primerNombre: "JOSEPH",
-                segundoNombre: "ALEJANDRO",
-                primerApellido: "CORTES",
-                segundoApellido: "ORTIZ",
-                numIdentificacion: "1003518694",
-                codigoInstitucion: "1101",
-                nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
-                fechaRegistro: "07/12/2025"
-            },
-            "52829284": {
-                codigoPrograma: "003503",
-                nombrePrograma: "PSICOLOGÍA",
-                estado: "GRADUADO",
-                primerNombre: "MARIANA",
-                segundoNombre: "ANGEL",
-                primerApellido: "AMORTEGUI",
-                segundoApellido: "BEJARANO",
-                numIdentificacion: "52829284",
-                codigoInstitucion: "07384",
-                nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
-                fechaRegistro: "05/08/2026"
-            }
+            "86045211": [
+                {
+                    codigoPrograma: "002174",
+                    nombrePrograma: "PROFESIONAL EN GESTIÓN DE LA SEGURIDAD Y LA SALUD LABORAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1208",
+                    nombreInstitucion: "POLITÉCNICO GRANCOLOMBIANO",
+                    fechaRegistro: "20/10/2025"
+                },
+                {
+                    codigoPrograma: "489",
+                    nombrePrograma: "MAGÍSTER EN SALUD Y SEGURIDAD EN EL TRABAJO",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1115",
+                    nombreInstitucion: "UNIVERSIDAD MANUELA BELTRÁN",
+                    fechaRegistro: "12/03/2026"
+                }
+            ],
+            "1003518694": [
+                {
+                    codigoPrograma: "1038",
+                    nombrePrograma: "INGENIERÍA CIVIL",
+                    estado: "GRADUADO",
+                    primerNombre: "JOSEPH",
+                    segundoNombre: "ALEJANDRO",
+                    primerApellido: "CORTES",
+                    segundoApellido: "ORTIZ",
+                    numIdentificacion: "1003518694",
+                    codigoInstitucion: "1101",
+                    nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
+                    fechaRegistro: "07/12/2025"
+                }
+            ],
+            "52829284": [
+                {
+                    codigoPrograma: "003503",
+                    nombrePrograma: "PSICOLOGÍA",
+                    estado: "GRADUADO",
+                    primerNombre: "MARIANA",
+                    segundoNombre: "ANGEL",
+                    primerApellido: "AMORTEGUI",
+                    segundoApellido: "BEJARANO",
+                    numIdentificacion: "52829284",
+                    codigoInstitucion: "07384",
+                    nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
+                    fechaRegistro: "05/08/2026"
+                }
+            ]
         };
 
         function realizarLogin() {
@@ -246,24 +265,28 @@
                 return;
             }
 
-            let estudiante = baseDatosEstudiantes[cedula];
+            let listaEstudiantes = baseDatosEstudiantes[cedula];
 
-            if (estudiante) {
-                cuerpoTabla.innerHTML = `
-                    <tr>
-                        <td>${estudiante.codigoPrograma}</td>
-                        <td>${estudiante.nombrePrograma}</td>
-                        <td>${estudiante.estado}</td>
-                        <td>${estudiante.primerNombre}</td>
-                        <td>${estudiante.segundoNombre}</td>
-                        <td>${estudiante.primerApellido}</td>
-                        <td>${estudiante.segundoApellido}</td>
-                        <td>${estudiante.numIdentificacion}</td>
-                        <td>${estudiante.codigoInstitucion}</td>
-                        <td>${estudiante.nombreInstitucion}</td>
-                        <td>${estudiante.fechaRegistro}</td>
-                    </tr>
-                `;
+            if (listaEstudiantes && listaEstudiantes.length > 0) {
+                let htmlFilas = "";
+                listaEstudiantes.forEach(estudiante => {
+                    htmlFilas += `
+                        <tr>
+                            <td>${estudiante.codigoPrograma}</td>
+                            <td>${estudiante.nombrePrograma}</td>
+                            <td>${estudiante.estado}</td>
+                            <td>${estudiante.primerNombre}</td>
+                            <td>${estudiante.segundoNombre}</td>
+                            <td>${estudiante.primerApellido}</td>
+                            <td>${estudiante.segundoApellido}</td>
+                            <td>${estudiante.numIdentificacion}</td>
+                            <td>${estudiante.codigoInstitucion}</td>
+                            <td>${estudiante.nombreInstitucion}</td>
+                            <td>${estudiante.fechaRegistro}</td>
+                        </tr>
+                    `;
+                });
+                cuerpoTabla.innerHTML = htmlFilas;
                 contenedorResultados.style.display = "block";
             } else {
                 contenedorResultados.style.display = "block";
