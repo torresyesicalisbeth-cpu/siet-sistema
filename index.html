@@ -3,207 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta y Validación - SIET</title>
+    <title>SIET - Sistema de Información de la Educación para el Trabajo y el Desarrollo Humano</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
+        body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+        
+        /* Cabecera idéntica y limpia */
+        .header-siet { background: #ffffff; border-bottom: 2px solid #d0d7de; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .header-left-img { height: 42px; width: auto; object-fit: contain; }
+        .siet-logo { font-size: 44px; font-weight: bold; color: #1e40af; letter-spacing: 2px; }
+        /* Tamaño de la caja original respetado */
+        .siet-box { border: 1px dotted #777; padding: 6px 12px; font-size: 11px; color: #333; font-weight: bold; line-height: 1.3; background: #fff; width: 230px; }
+        .header-right-img { height: 45px; width: auto; object-fit: contain; }
+
+        /* Contenedor central */
+        .main-container { max-width: 780px; margin: 25px auto; padding: 0 15px; }
+
+        /* Cuadro de ingreso */
+        .login-wrapper { width: 440px; margin: 0 auto 25px auto; position: relative; margin-top: 15px; }
+        .login-tab { 
+            position: absolute; 
+            top: -15px; 
+            left: 15px; 
+            background: #1e40af; 
+            color: white; 
+            padding: 5px 16px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            border-top-left-radius: 3px; 
+            border-top-right-radius: 3px; 
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
-        .header-siet {
-            background-color: #004884;
-            color: #ffffff;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
+        .login-box { 
+            background: #f8fafc; 
+            border: 1px solid #cbd5e1; 
+            padding: 30px 22px 20px 22px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            border-radius: 3px; 
         }
-        .main-container {
-            max-width: 800px;
-            margin: 30px auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        h1 {
-            font-size: 22px;
-            color: #004884;
-            border-bottom: 2px solid #004884;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 6px;
-        }
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .btn-consultar {
-            background-color: #004884;
-            color: white;
-            border: none;
-            padding: 11px 25px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-consultar:hover {
-            background-color: #003366;
-        }
-        #resultados {
-            display: none;
-            margin-top: 30px;
-        }
-        .result-card {
-            border: 1px solid #dcdcdc;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            background: #fff;
-        }
-        .result-header {
-            background-color: #004884;
-            color: white;
-            padding: 10px 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .result-body {
-            padding: 15px;
-            font-size: 13px;
-        }
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f1f1f1;
-        }
-        .result-label {
-            font-weight: bold;
-            color: #555;
-            width: 40%;
-        }
-        .result-value {
-            color: #222;
-            width: 60%;
-            text-align: right;
-        }
-        .error-msg {
-            color: #d9534f;
-            font-weight: bold;
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 11px;
-            color: #777;
-            border-top: 1px solid #ddd;
-            margin-top: 40px;
-        }
+        .form-group { margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .form-group label { font-size: 13px; color: #333; font-weight: bold; width: 90px; }
+        .form-group input { width: 68%; padding: 6px 8px; border: 1px solid #94a3b8; border-radius: 2px; font-size: 13px; background: #fff; }
+        .login-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 15px; }
+        .btn { padding: 6px 16px; border: none; border-radius: 2px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        .btn-ingresar { background-color: #f59e0b; color: white; }
+        .btn-ingresar:hover { background-color: #d97706; }
+        .btn-registrarse { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+        .forgot-pass { display: block; margin-top: 12px; font-size: 12px; color: #1e40af; text-decoration: underline; }
+
+        /* Banners inferiores limpios */
+        .banners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .banner-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: none; }
+        .banner-bottom-img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: none; }
+
+        /* Panel de Consulta Interno (Tras hacer Login) */
+        #panelConsulta { display: none; }
+        .search-panel { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 22px; border-radius: 3px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .search-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .search-group { display: flex; align-items: center; gap: 10px; }
+        .search-group label { font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; }
+        .search-select, .search-input { padding: 7px 10px; font-size: 13px; border: 1px solid #94a3b8; border-radius: 2px; background: #fff; width: 220px; }
+        .btn-buscar { background-color: #1e3a8a; color: white; border: none; padding: 8px 20px; font-size: 13px; font-weight: bold; border-radius: 2px; cursor: pointer; text-transform: uppercase; }
+        .btn-buscar:hover { background-color: #111827; }
+        .logout-link { float: right; color: #dc2626; font-weight: bold; text-decoration: none; font-size: 13px; margin-bottom: 10px; }
+
+        /* Tabla de Resultados Oficial */
+        .results-container { display: none; margin-top: 20px; }
+        .table-responsive { overflow-x: auto; background: white; border: 2px solid #1e40af; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; }
+        th { background-color: #1e40af; color: white; padding: 12px 6px; border: 1px solid #334155; font-weight: bold; text-transform: uppercase; }
+        td { padding: 14px 6px; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 500; background-color: #fff; }
     </style>
 </head>
 <body>
 
+    <!-- Encabezado exacto -->
     <div class="header-siet">
-        Ministerio de Educación Nacional - Sistema de Información (SIET)
+        <div class="header-left">
+            <img class="header-left-img" src="colp.jpg" alt="Colombia Potencia de la Vida">
+            <div class="siet-logo">SIET</div>
+            <div class="siet-box">Sistema de Información de la Educación<br>para el Trabajo y el Desarrollo Humano</div>
+        </div>
+        <div>
+            <img class="header-right-img" src="images.png" alt="Mineducación">
+        </div>
     </div>
 
     <div class="main-container">
-        <h1>Consulta de Títulos y Certificaciones</h1>
+        
+        <!-- PANTALLA DE LOGIN INICIAL -->
+        <div id="panelLogin" style="display: block;">
+            <div class="login-wrapper">
+                <div class="login-tab">Ingreso</div>
+                <div class="login-box">
+                    <div class="form-group">
+                        <label>Usuario:</label>
+                        <input type="text" id="userInput" value="LEXISTRAMITACOL">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña:</label>
+                        <input type="password" id="passInput" placeholder="Contraseña">
+                    </div>
+                    <div class="login-buttons">
+                        <button class="btn btn-ingresar" onclick="realizarLogin()">Ingresar</button>
+                        <button class="btn btn-registrarse">Regístrese</button>
+                    </div>
+                    <a href="#" class="forgot-pass">Recordar Contraseña</a>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label>Número de Identificación (Cédula de Ciudadanía)</label>
-            <input type="text" id="cedulaInput" class="form-control" placeholder="Ingrese número de cédula">
+            <!-- Banners inferiores -->
+            <div class="banners-grid">
+                <div>
+                    <img class="banner-img" src="banner1.jpg" alt="Consulta instituciones">
+                </div>
+                <div>
+                    <img class="banner-img" src="banner2.jpg" alt="Consulta programas">
+                </div>
+            </div>
+
+            <div>
+                <img class="banner-bottom-img" src="banner3.jpg" alt="Educación para el trabajo">
+            </div>
         </div>
-        <button type="button" class="btn-consultar" onclick="consultarSiet()">Consultar</button>
 
-        <div id="resultados">
-            <div id="cuerpoResultados"></div>
+        <!-- PANTALLA DE CONSULTA INTERNA (Tras hacer Login) -->
+        <div id="panelConsulta">
+            <a href="#" class="logout-link" onclick="cerrarSesion()">Cerrar Sesión</a>
+            <div style="clear: both;"></div>
+
+            <div class="search-panel">
+                <div class="search-row">
+                    <div class="search-group">
+                        <label>Tipo de documento:</label>
+                        <select class="search-select">
+                            <option>CEDULA CIUDADANIA</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <label>Documento estudiante:</label>
+                        <input type="text" id="cedulaInput" class="search-input" placeholder="Ej: 12345678">
+                    </div>
+                    <button type="button" class="btn-buscar" onclick="buscarEstudiante()">BUSCAR &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Resultados Oficial -->
+            <div id="resultados" class="results-container">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código del programa</th>
+                                <th>Nombre del programa</th>
+                                <th>Estado</th>
+                                <th>Primer nombre</th>
+                                <th>Segundo nombre</th>
+                                <th>Primer apellido</th>
+                                <th>Segundo apellido</th>
+                                <th>N° de identificación</th>
+                                <th>Código de institución</th>
+                                <th>Nombre de la institución</th>
+                                <th>Fecha de registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCuerpo"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="footer">
-        República de Colombia - Ministerio de Educación Nacional
     </div>
 
     <script>
-        // Base de datos del SIET con Hender y demás estudiantes
-        const baseDatosSiet = {
-            "1007661037": {
-                apellidos: "ALVARINO CASTAÑEDA",
-                nombres: "HENDER HENRIQUE",
-                identificacion: "1007661037",
-                lugarExpedicion: "CARTAGENA",
-                programa: "TECNÓLOGO EN DESARROLLO INFORMÁTICO",
-                institucion: "UNIVERSIDAD ECCI",
-                nivel: "TECNOLOGÍA",
-                acta: "Acta de Grado No. 051",
-                fechaGrado: "19 de mayo de 2026",
-                modalidad: "Ciclo Coterminal del Proyecto de Investigación Aplicada",
-                calificacion: "4.6 (Cuatro Punto Seis) - Aprobatorio",
-                estado: "REGISTRADO Y VIGENTE"
-            }
-            // Aquí puedes seguir agregando más cédulas de otros estudiantes si lo necesitas en el futuro
+        // Base de datos oficial con todos los estudiantes actualizados
+        const baseDatosEstudiantes = {
+            "1006505247": [
+                {
+                    codigoPrograma: "66708787",
+                    nombrePrograma: "TÉCNICO EN ENFERMERÍA",
+                    estado: "GRADUADO",
+                    primerNombre: "VIVIAN",
+                    segundoNombre: "SHARIK",
+                    primerApellido: "CARRANZA",
+                    segundoApellido: "RAMIREZ",
+                    numIdentificacion: "1006505247",
+                    codigoInstitucion: "1120",
+                    nombreInstitucion: "SERVICIO NACIONAL DE APRENDIZAJE SENA",
+                    fechaRegistro: "01/11/2022"
+                },
+                {
+                    codigoPrograma: "944",
+                    nombrePrograma: "ENFERMERA",
+                    estado: "GRADUADO",
+                    primerNombre: "VIVIAN",
+                    segundoNombre: "SHARIK",
+                    primerApellido: "CARRANZA",
+                    segundoApellido: "RAMIREZ",
+                    numIdentificacion: "1006505247",
+                    codigoInstitucion: "1101",
+                    nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
+                    fechaRegistro: "07/11/2026"
+                }
+            ],
+            "94297689": [
+                {
+                    codigoPrograma: "2102",
+                    nombrePrograma: "TECNÓLOGO EN GESTIÓN DE REDES INALÁMBRICAS",
+                    estado: "GRADUADO",
+                    primerNombre: "BENHUR",
+                    segundoNombre: "",
+                    primerApellido: "BOLAÑOS",
+                    segundoApellido: "VALDECILLA",
+                    numIdentificacion: "94297689",
+                    codigoInstitucion: "1101",
+                    nombreInstitucion: "UNIVERSIDAD NACIONAL ABIERTA Y A DISTANCIA - UNAD",
+                    fechaRegistro: "20/06/2023"
+                },
+                {
+                    codigoPrograma: "07384",
+                    nombrePrograma: "INGENIERÍA DE TELECOMUNICACIONES",
+                    estado: "GRADUADO",
+                    primerNombre: "BENHUR",
+                    segundoNombre: "",
+                    primerApellido: "BOLAÑOS",
+                    segundoApellido: "VALDECILLA",
+                    numIdentificacion: "94297689",
+                    codigoInstitucion: "1102",
+                    nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
+                    fechaRegistro: "05/08/2025"
+                }
+            ],
+            "1143949764": [
+                {
+                    codigoPrograma: "109783",
+                    nombrePrograma: "INGENIERO DE SISTEMAS",
+                    estado: "GRADUADO",
+                    primerNombre: "SEBASTIAN",
+                    segundoNombre: "AGREDO",
+                    primerApellido: "RESTREPO",
+                    segundoApellido: "",
+                    numIdentificacion: "1143949764",
+                    codigoInstitucion: "1111",
+                    nombreInstitucion: "UNIVERSIDAD SANTIAGO DE CALI",
+                    fechaRegistro: "23/08/2024"
+                }
+            ],
+            "1107099153": [
+                {
+                    codigoPrograma: "104396",
+                    nombrePrograma: "INGENIERO DE SISTEMAS",
+                    estado: "GRADUADO",
+                    primerNombre: "MIGUEL",
+                    segundoNombre: "ANGEL",
+                    primerApellido: "VENTE",
+                    segundoApellido: "VENTE",
+                    numIdentificacion: "1107099153",
+                    codigoInstitucion: "1119",
+                    nombreInstitucion: "CORPORACIÓN UNIFICADA NACIONAL DE EDUCACIÓN SUPERIOR - C.U.N.",
+                    fechaRegistro: "24/11/2024"
+                }
+            ],
+            "1129521582": [
+                {
+                    codigoPrograma: "0922",
+                    nombrePrograma: "ADMINISTRACIÓN DE EMPRESAS",
+                    estado: "GRADUADO",
+                    primerNombre: "JAIRO",
+                    segundoNombre: "DAVID",
+                    primerApellido: "MEDRANO",
+                    segundoApellido: "CAMARGO",
+                    numIdentificacion: "1129521582",
+                    codigoInstitucion: "1103",
+                    nombreInstitucion: "FUNDACIÓN UNIVERSITARIA DEL ÁREA ANDINA",
+                    fechaRegistro: "07/02/2026"
+                }
+            ],
+            "86045211": [
+                {
+                    codigoPrograma: "4652",
+                    nombrePrograma: "INGENIERO AMBIENTAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1108",
+                    nombreInstitucion: "UNIVERSIDAD LIBRE",
+                    fechaRegistro: "15/09/2008"
+                },
+                {
+                    codigoPrograma: "53176",
+                    nombrePrograma: "ESPECIALISTA EN SALUD OCUPACIONAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1108",
+                    nombreInstitucion: "UNIVERSIDAD LIBRE",
+                    fechaRegistro: "21/03/2012"
+                },
+                {
+                    codigoPrograma: "52078",
+                    nombrePrograma: "MAGÍSTER EN CALIDAD Y GESTIÓN INTEGRAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1105",
+                    nombreInstitucion: "UNIVERSIDAD SANTO TOMÁS",
+                    fechaRegistro: "06/06/2022"
+                },
+                {
+                    codigoPrograma: "002174",
+                    nombrePrograma: "PROFESIONAL EN GESTIÓN DE LA SEGURIDAD Y LA SALUD LABORAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1208",
+                    nombreInstitucion: "POLITÉCNICO GRANCOLOMBIANO",
+                    fechaRegistro: "20/10/2025"
+                },
+                {
+                    codigoPrograma: "23844",
+                    nombrePrograma: "INGENIERO INDUSTRIAL",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "1215",
+                    nombreInstitucion: "FUNDACIÓN DE EDUCACIÓN SUPERIOR SAN JOSÉ",
+                    fechaRegistro: "22/10/2025"
+                },
+                {
+                    codigoPrograma: "489",
+                    nombrePrograma: "MAGÍSTER EN SALUD Y SEGURIDAD EN EL TRABAJO",
+                    estado: "GRADUADO",
+                    primerNombre: "GERSON",
+                    segundoNombre: "GUILLERMO",
+                    primerApellido: "PEÑA",
+                    segundoApellido: "PAVA",
+                    numIdentificacion: "86045211",
+                    codigoInstitucion: "21365",
+                    nombreInstitucion: "UNIVERSIDAD MANUELA BELTRÁN",
+                    fechaRegistro: "12/03/2026"
+                }
+            ],
+            "1007243508": [
+                {
+                    codigoPrograma: "489",
+                    nombrePrograma: "PROFESIONAL EN FISIOTERAPIA",
+                    estado: "GRADUADO",
+                    primerNombre: "JUAN",
+                    segundoNombre: "SEBASTIAN",
+                    primerApellido: "ZAPATA",
+                    segundoApellido: "SALGADO",
+                    numIdentificacion: "1007243508",
+                    codigoInstitucion: "21365",
+                    nombreInstitucion: "UNIVERSIDAD MANUELA BELTRÁN",
+                    fechaRegistro: "10/08/2026"
+                }
+            ],
+            "1003518604": [
+                {
+                    codigoPrograma: "1038",
+                    nombrePrograma: "INGENIERÍA CIVIL",
+                    estado: "GRADUADO",
+                    primerNombre: "JOSEPH",
+                    segundoNombre: "ALEJANDRO",
+                    primerApellido: "CORTES",
+                    segundoApellido: "ORTIZ",
+                    numIdentificacion: "1003518604",
+                    codigoInstitucion: "1101",
+                    nombreInstitucion: "PONTIFICIA UNIVERSIDAD JAVERIANA",
+                    fechaRegistro: "07/12/2025"
+                }
+            ],
+            "52829284": [
+                {
+                    codigoPrograma: "003503",
+                    nombrePrograma: "PSICOLOGÍA",
+                    estado: "GRADUADO",
+                    primerNombre: "MARIANA",
+                    segundoNombre: "ANGEL",
+                    primerApellido: "AMORTEGUI",
+                    segundoApellido: "BEJARANO",
+                    numIdentificacion: "52829284",
+                    codigoInstitucion: "07384",
+                    nombreInstitucion: "UNIVERSIDAD DE ANTIOQUIA",
+                    fechaRegistro: "05/08/2026"
+                }
+            ],
+            "1007661037": [
+                {
+                    codigoPrograma: "051",
+                    nombrePrograma: "TECNÓLOGO EN DESARROLLO INFORMÁTICO",
+                    estado: "GRADUADO",
+                    primerNombre: "HENDER",
+                    segundoNombre: "HENRIQUE",
+                    primerApellido: "ALVARINO",
+                    segundoApellido: "CASTAÑEDA",
+                    numIdentificacion: "1007661037",
+                    codigoInstitucion: "13370",
+                    nombreInstitucion: "UNIVERSIDAD ECCI",
+                    fechaRegistro: "19/05/2026"
+                }
+            ]
         };
 
-        function consultarSiet() {
+        function realizarLogin() {
+            let usuario = document.getElementById('userInput').value.trim();
+            if (usuario === "LEXISTRAMITACOL") {
+                document.getElementById('panelLogin').style.display = "none";
+                document.getElementById('panelConsulta').style.display = "block";
+            } else {
+                alert("Usuario o contraseña incorrectos.");
+            }
+        }
+
+        function cerrarSesion() {
+            document.getElementById('panelConsulta').style.display = "none";
+            document.getElementById('panelLogin').style.display = "block";
+            document.getElementById('passInput').value = "";
+            document.getElementById('resultados').style.display = "none";
+            document.getElementById('cedulaInput').value = "";
+        }
+
+        function buscarEstudiante() {
             let cedula = document.getElementById('cedulaInput').value.trim();
-            let contenedor = document.getElementById('resultados');
-            let cuerpo = document.getElementById('cuerpoResultados');
+            let tbody = document.getElementById('tablaCuerpo');
+            let resultadosDiv = document.getElementById('resultados');
+            
+            tbody.innerHTML = "";
 
             if (!cedula) {
                 alert("Por favor ingrese el número de identificación.");
                 return;
             }
 
-            let persona = baseDatosSiet[cedula];
+            let registros = baseDatosEstudiantes[cedula];
 
-            if (persona) {
-                cuerpo.innerHTML = `
-                    <div class="result-card">
-                        <div class="result-header">Información del Estudiante</div>
-                        <div class="result-body">
-                            <div class="result-row"><span class="result-label">Identificación:</span><span class="result-value">${persona.identificacion}</span></div>
-                            <div class="result-row"><span class="result-label">Lugar de Expedición:</span><span class="result-value">${persona.lugarExpedicion}</span></div>
-                            <div class="result-row"><span class="result-label">Nombres y Apellidos:</span><span class="result-value">${persona.nombres} ${persona.apellidos}</span></div>
-                        </div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-header">Información del Título y Programa</div>
-                        <div class="result-body">
-                            <div class="result-row"><span class="result-label">Título Otorgado:</span><span class="result-value">${persona.programa}</span></div>
-                            <div class="result-row"><span class="result-label">Institución:</span><span class="result-value">${persona.institucion}</span></div>
-                            <div class="result-row"><span class="result-label">Nivel Académico:</span><span class="result-value">${persona.nivel}</span></div>
-                            <div class="result-row"><span class="result-label">Soporte / Acta:</span><span class="result-value">${persona.acta}</span></div>
-                            <div class="result-row"><span class="result-label">Fecha de Grado:</span><span class="result-value">${persona.fechaGrado}</span></div>
-                            <div class="result-row"><span class="result-label">Opción de Grado:</span><span class="result-value">${persona.modalidad}</span></div>
-                            <div class="result-row"><span class="result-label">Calificación:</span><span class="result-value">${persona.calificacion}</span></div>
-                            <div class="result-row"><span class="result-label">Estado Actual:</span><span class="result-value"><strong>${persona.estado}</strong></span></div>
-                        </div>
-                    </div>
-                `;
-                contenedor.style.display = "block";
+            if (registros && registros.length > 0) {
+                registros.forEach(item => {
+                    let fila = `<tr>
+                        <td>${item.codigoPrograma}</td>
+                        <td>${item.nombrePrograma}</td>
+                        <td>${item.estado}</td>
+                        <td>${item.primerNombre}</td>
+                        <td>${item.segundoNombre}</td>
+                        <td>${item.primerApellido}</td>
+                        <td>${item.segundoApellido}</td>
+                        <td>${item.numIdentificacion}</td>
+                        <td>${item.codigoInstitucion}</td>
+                        <td>${item.nombreInstitucion}</td>
+                        <td>${item.fechaRegistro}</td>
+                    </tr>`;
+                    tbody.innerHTML += fila;
+                });
+                resultadosDiv.style.display = "block";
             } else {
-                cuerpo.innerHTML = `<div class="error-msg">No se encuentran registros asociados al número de identificación ingresado en el sistema SIET.</div>`;
-                contenedor.style.display = "block";
+                tbody.innerHTML = `<tr><td colspan="11" style="color: red; font-weight: bold; padding: 20px;">No se encontraron registros asociados al número de identificación ingresado.</td></tr>`;
+                resultadosDiv.style.display = "block";
             }
         }
     </script>
